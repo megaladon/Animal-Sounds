@@ -1,0 +1,25 @@
+******** Animal Sounds *******************
+User clicks on animals and objects. Each object has an animation and sound reaction.
+User can click on a reload button to go to the next scene.
+********************************************************************************************
+
+// Resolution references ------------------------------
+http://gamedevelopment.tutsplus.com/articles/quick-tip-what-is-the-best-screen-resolution-for-your-game--gamedev-14723
+2048x1536px, 4:3 (iPad 3rd gen, iPad 4th gen, iPad Air, iPad mini 2nd gen): This is twice the resolution of the previous generation. 
+When making an iPad game it is therefore easier to create it for a 2048x1536px display first, and then scale it down by 50%
+
+
+// Transision references ------------------------------
+
+http://tympanus.net/Development/PageTransitions/
+	
+	
+// Description
+An app for infants and toddlers. Help your kids learn animal sounds the fun and easy way. Kids simply touch an animal to hear its sound. Enjoy this fun educational game for kids.
+Features:
+-All their favorite animal sounds.
+-Kid friendly - simply touch and play.
+-Even your baby can enjoy the farm sounds. 
+-scenes randomly generated with different varieties of animals.
+-Keeps kids entertained on long car rides.
+Lets kids learn animals without the flash cards. Similiar to zoo animals and zoo sounds. If your kids love elmo games then they will love this!
