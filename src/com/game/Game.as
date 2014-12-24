@@ -2,6 +2,8 @@ package com.game
 {
 	import com.game.SceneData;
 	import com.greensock.easing.Back;
+	import com.greensock.easing.Ease;
+	import com.greensock.easing.Linear;
 	import com.greensock.TimelineMax;
 	import com.greensock.TweenMax;
 	import flash.display.MovieClip;
@@ -85,11 +87,22 @@ package com.game
 				if (sceneObject.instanceName == e.target.name) 
 				{
 					// play object animation
-					e.target.play();
+					e.target.gotoAndPlay("action");
+					
+					// run/fly off screen if needed
+					if (sceneObject.runOffScreen) runOffScreen( MovieClip(e.target) );
 					
 					// play object soundFX
 				}
 			}
+		}
+		
+		private function runOffScreen(clip:MovieClip):void 
+		{
+			trace("runOffScreen");
+			var startX:Number = clip.x;
+			var destX:Number = Main.OFF_SCREEN_LEFT - clip.width;//  -(clip.width);
+			TweenMax.to( clip, 1.0, { x: destX, ease:Linear.easeNone } );
 		}
 		
 		private function sceneTransitionInDone():void 

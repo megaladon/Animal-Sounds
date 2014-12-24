@@ -16,6 +16,8 @@ package com.game {
 			[
 				{instanceName: "balloons", title: "BALLOONS", sfx: "" },
 				{instanceName: "rainCloud", title: "RAIN CLOUD", sfx: "" },
+				{instanceName: "ram", title: "RAM", sfx: "", runOffScreen: false },
+				{instanceName: "dog", title: "DOG", sfx: "", runOffScreen: true },
 				{instanceName: "birds", title: "BIRDS", sfx: "" }
 			];
 			

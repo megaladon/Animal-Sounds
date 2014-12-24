@@ -29,6 +29,7 @@ package
 	public class Main extends Sprite 
 	{
 		static public const SCREEN_WIDTH:int = 2048;
+		static public const OFF_SCREEN_LEFT:Number = -(SCREEN_WIDTH/2)
 		
 		private var _mainMenu:MainMenu;
 		private var _game:Game;
