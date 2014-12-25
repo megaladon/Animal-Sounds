@@ -90,19 +90,31 @@ package com.game
 					e.target.gotoAndPlay("action");
 					
 					// run/fly off screen if needed
-					if (sceneObject.runOffScreen) runOffScreen( MovieClip(e.target) );
+					if (sceneObject.runOffDirection) runOffScreen( MovieClip(e.target), sceneObject.runOffDirection );
 					
 					// play object soundFX
 				}
 			}
 		}
 		
-		private function runOffScreen(clip:MovieClip):void 
+		private function runOffScreen(clip:MovieClip, direction:String):void 
 		{
-			trace("runOffScreen");
 			var startX:Number = clip.x;
-			var destX:Number = Main.OFF_SCREEN_LEFT - clip.width;//  -(clip.width);
-			TweenMax.to( clip, 1.0, { x: destX, ease:Linear.easeNone } );
+			var destX:Number =  direction == SceneData.LEFT ? Main.OFF_SCREEN_LEFT - clip.width:Main.OFF_SCREEN_RIGHT;
+			TweenMax.to( clip, 1.0, { x: destX, ease:Linear.easeNone, onComplete: comeBackOnScreen, onCompleteParams:[clip, startX, direction] } );
+		}
+		
+		private function comeBackOnScreen(clip:MovieClip, destX:Number, direction:String):void 
+		{
+			clip.gotoAndPlay("action");
+			var startX:Number = direction == SceneData.LEFT ? Main.OFF_SCREEN_RIGHT:Main.OFF_SCREEN_LEFT - clip.width;
+			clip.x = startX;
+			TweenMax.to( clip, 1.0, { x: destX, ease:Linear.easeNone, onComplete: comeBackOnScreenDone, onCompleteParams: [clip] } );
+		}
+		
+		private function comeBackOnScreenDone(clip:MovieClip):void 
+		{
+			clip.gotoAndStop("idle");
 		}
 		
 		private function sceneTransitionInDone():void 

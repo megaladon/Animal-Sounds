@@ -6,6 +6,9 @@ package com.game {
 	 */
 	public class SceneData 
 	{
+		static public const LEFT:String = "left";
+		static public const RIGHT:String = "right";
+		
 		private var _scenes:Array;
 		private var _totalNumberOfScenes:int;
 		
@@ -16,8 +19,8 @@ package com.game {
 			[
 				{instanceName: "balloons", title: "BALLOONS", sfx: "" },
 				{instanceName: "rainCloud", title: "RAIN CLOUD", sfx: "" },
-				{instanceName: "ram", title: "RAM", sfx: "", runOffScreen: false },
-				{instanceName: "dog", title: "DOG", sfx: "", runOffScreen: true },
+				{instanceName: "ram", title: "RAM", sfx: "", runOffDirection: LEFT },
+				{instanceName: "dog", title: "DOG", sfx: "", runOffDirection: LEFT },
 				{instanceName: "birds", title: "BIRDS", sfx: "" }
 			];
 			
