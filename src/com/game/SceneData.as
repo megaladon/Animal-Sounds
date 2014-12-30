@@ -17,11 +17,12 @@ package com.game {
 			var sceneClip:Scene0 = new Scene0();			
 			var scene0:Array = 
 			[
-				{instanceName: "balloons", title: "BALLOONS", sfx: "" },
 				{instanceName: "rainCloud", title: "RAIN CLOUD", sfx: "" },
 				{instanceName: "ram", title: "RAM", sfx: "", runOffDirection: LEFT },
 				{instanceName: "dog", title: "DOG", sfx: "", runOffDirection: LEFT },
-				{instanceName: "birds", title: "BIRDS", sfx: "" }
+				{instanceName: "bear", title: "BEAR", sfx: "" },
+				{instanceName: "turtle", title: "TURTLE", sfx: "" },
+				{instanceName: "turtle2", title: "TURTLE2", sfx: "", idleWalk: {speed: 20 } }
 			];
 			
 			var scene1:Array = 
