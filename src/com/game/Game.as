@@ -1,5 +1,6 @@
 package com.game 
 {
+	import com.game.animal.Animal;
 	import com.game.SceneData;
 	import com.greensock.easing.Back;
 	import com.greensock.easing.Ease;
@@ -55,15 +56,14 @@ package com.game
 				_activeScene.sceneClip.scaleY = .80;				
 				addChild( _activeScene.sceneClip );
 				
-				// --- init scene objects ---						
+				// --- init scene objects ---
+				var _animals:Array = [];
 				var sceneData:Array = _activeScene.sceneData
 				for (var i:int = 0; i < sceneData.length; i++) 
 				{
-					var sceneObject:Object = sceneData[i];					
-					_activeScene.sceneClip[sceneObject.instanceName].buttonMode = true;
-					MovieClip(_activeScene.sceneClip[sceneObject.instanceName]).mouseChildren = false;
-					_activeScene.sceneClip[sceneObject.instanceName].addEventListener(MouseEvent.CLICK, handleObjectClicked);
-					if (sceneObject.idleWalk) initIdleWalk( _activeScene.sceneClip[sceneObject.instanceName], sceneObject.idleWalk );
+					var sceneObject:Object = sceneData[i];
+					var animal:Animal = new Animal(MovieClip(_activeScene.sceneClip[sceneObject.instanceName]), sceneData[i] );	
+					_animals.push( animal );
 				}
 				
 				// --- Transition out previous scene ---							
@@ -78,81 +78,10 @@ package com.game
 				tm.add( TweenMax.to( _activeScene.sceneClip,  .5, { autoAlpha:1, scaleX: 1, scaleY: 1, ease:Back.easeOut } ) );			
 		}
 		
-		private function initIdleWalk(clip:MovieClip, params:Object):void 
-		{
-			var destX:Number = Main.OFF_SCREEN_LEFT - clip.width //  direction == SceneData.LEFT ? Main.OFF_SCREEN_LEFT - clip.width:Main.OFF_SCREEN_RIGHT;
-			_walkTM = new TimelineMax( {onComplete: loopIdleWalk, onCompleteParams:[clip, params]} );
-			_walkTM.add( TweenMax.to( clip, params.speed, { x: destX, ease:Linear.easeNone } ) );			
-		}
-		
-		private function loopIdleWalk(clip:MovieClip, params:Object):void 
-		{
-			clip.x = Main.OFF_SCREEN_RIGHT// - (Main.SCREEN_WIDTH/2);
-			//initIdleWalk(clip, params);
-			_walkTM.restart();
-		}
-		
-		private function handleObjectClicked(e:MouseEvent):void 
-		{
-			trace("test " + e.target + " " + e.target.name);
-			//find the object name						
-			var sceneData:Array = _activeScene.sceneData
-			for (var i:int = 0; i < sceneData.length; i++) 
-			{
-				var sceneObject:Object = sceneData[i];	
-				if (sceneObject.instanceName == e.target.name) 
-				{
-					// play object animation
-					e.target.gotoAndPlay("action");
-					
-					// run/fly off screen if needed
-					if (sceneObject.runOffDirection) runOffScreen( MovieClip(e.target), sceneObject.runOffDirection );		
-					
-					// Keith fix this. each object should have it's own timeline.
-					if (_walkTM) {
-						_walkTM.pause();
-						e.target.addEventListener(Event.ENTER_FRAME, checkPause);
-					}
-					
-					// play object soundFX
-				}
-			}
-		}
-		
-		private function checkPause(e:Event):void 
-		{
-			trace("ev " + MovieClip(e.target).currentFrameLabel+" "+e.target);
-			if ( MovieClip(e.target).currentFrameLabel == "endAction") {
-				_walkTM.resume();
-				e.target.removeEventListener(Event.ENTER_FRAME, checkPause);
-			}
-		}
-		
-		private function runOffScreen(clip:MovieClip, direction:String):void 
-		{
-			var startX:Number = clip.x;
-			var destX:Number =  direction == SceneData.LEFT ? Main.OFF_SCREEN_LEFT - clip.width:Main.OFF_SCREEN_RIGHT;
-			TweenMax.to( clip, 1.0, { x: destX, ease:Linear.easeNone, onComplete: comeBackOnScreen, onCompleteParams:[clip, startX, direction] } );
-		}
-		
-		private function comeBackOnScreen(clip:MovieClip, destX:Number, direction:String, frame:String = "action", speed:Number = 1):void 
-		{
-			clip.gotoAndPlay(frame);
-			var startX:Number = direction == SceneData.LEFT ? Main.OFF_SCREEN_RIGHT:Main.OFF_SCREEN_LEFT - clip.width;
-			clip.x = startX;
-			TweenMax.to( clip, speed, { x: destX, ease:Linear.easeNone, onComplete: comeBackOnScreenDone, onCompleteParams: [clip] } );
-		}
-		
-		private function comeBackOnScreenDone(clip:MovieClip):void 
-		{
-			clip.gotoAndStop("idle");
-		}
-		
 		private function sceneTransitionInDone():void 
 		{
 			dispatchEvent( new GameEvents(GameEvents.SCENE_TRANSITION_IN_DONE) );			
-		}
-		
+		}		
 		
 		
 	}
