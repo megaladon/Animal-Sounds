@@ -27,7 +27,8 @@ package com.game {
 			
 			var scene1:Array = 
 			[
-				{instanceName: "alien", title: "Alien", sfx: "" }
+				{instanceName: "alien", title: "Alien", sfx: "" },
+				{instanceName: "blueBird", title: "BLUE BIRD", sfx: "", idleWalk: {speed: 20 } }
 			];
 			_scenes = [scene0, scene1];		
 			
