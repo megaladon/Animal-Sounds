@@ -20,9 +20,13 @@ package com.game {
 				{instanceName: "rainCloud", title: "RAIN CLOUD", sfx: "" },
 				{instanceName: "ram", title: "RAM", sfx: "", runOffDirection: LEFT },
 				{instanceName: "dog", title: "DOG", sfx: "", runOffDirection: LEFT },
+				{instanceName: "cow", title: "COW", sfx: "" },
+				{instanceName: "horse", title: "HORSE", sfx: "" },
+				{instanceName: "pig", title: "PIG", sfx: "" },
 				{instanceName: "bear", title: "BEAR", sfx: "" },
 				{instanceName: "turtle", title: "TURTLE", sfx: "" },
-				{instanceName: "turtle2", title: "TURTLE2", sfx: "", idleWalk: {speed: 20 } }
+				{instanceName: "turtle2", title: "TURTLE2", sfx: "", idleWalk: {speed: 20 } },
+				{instanceName: "chicken", title: "CHICKEN", sfx: "", runOffDirection: LEFT }
 			];
 			
 			var scene1:Array = 
