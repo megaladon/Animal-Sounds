@@ -69,7 +69,7 @@ package
 			myFormat.bold  = true
 			myFormat.font  = "Arial"
 			_debugTextField.defaultTextFormat = myFormat	
-			_debugTextField.x = 0;
+			_debugTextField.x = 200;
 			_debugTextField.y = 0;
 			_debugTextField.width = 300
 			_debugTextField.autoSize = TextFieldAutoSize.CENTER;

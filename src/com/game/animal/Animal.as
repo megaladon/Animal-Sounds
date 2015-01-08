@@ -18,6 +18,7 @@ package com.game.animal
 		private var _animalData:Object;
 		private var _walkTM:TimelineMax;
 		private var _count:Number;
+		private var _idleOdds:int;
 		
 		public function Animal(clip:MovieClip, animalData:Object) 
 		{
@@ -27,6 +28,7 @@ package com.game.animal
 			_clip.addEventListener(MouseEvent.CLICK, handleObjectClicked);
 			
 			_animalData = animalData;
+			_idleOdds 	= _animalData.idleOdds? _animalData.idleOdds:5;
 			
 			if (_animalData.idleWalk) initIdleWalk();
 			_count = 1;
@@ -37,7 +39,7 @@ package com.game.animal
 		{
 			_count++;
 			if( _count % 30 == 0 ){
-			var num:Number = Math.ceil(Math.random()*5);
+			var num:Number = Math.ceil(Math.random()*_idleOdds);
 				if(num == 1 && _clip.currentFrame == 1){			
 					_clip.gotoAndPlay("idle");
 				}
@@ -46,8 +48,6 @@ package com.game.animal
 		
 		private function handleObjectClicked(e:MouseEvent):void 
 		{
-			
-			
 			
 			// run/fly off screen if needed
 			if (_animalData.runOffDirection) {
@@ -73,6 +73,7 @@ package com.game.animal
 		private function checkPause(e:Event):void 
 		{
 			if ( _clip.currentFrameLabel == "endAction") {
+				_clip.gotoAndPlay("idle");
 				_walkTM.resume();
 				removeEventListener(Event.ENTER_FRAME, checkPause);
 			}
@@ -105,14 +106,15 @@ package com.game.animal
 		
 		private function initIdleWalk():void 
 		{
-			var destX:Number = Main.OFF_SCREEN_LEFT - _clip.width //  direction == SceneData.LEFT ? Main.OFF_SCREEN_LEFT - clip.width:Main.OFF_SCREEN_RIGHT;
-			_walkTM = new TimelineMax( {onComplete: loopIdleWalk, onCompleteParams:[_clip]} );
+			var destX:Number =  _animalData.idleWalk.dir == SceneData.LEFT ?  Main.OFF_SCREEN_LEFT - _clip.width:Main.OFF_SCREEN_RIGHT;
+			var returnStartX:Number =  _animalData.idleWalk.dir == SceneData.LEFT ? Main.OFF_SCREEN_RIGHT :Main.OFF_SCREEN_LEFT - _clip.width;
+			_walkTM = new TimelineMax( {onComplete: loopIdleWalk, onCompleteParams:[_clip,returnStartX]} );
 			_walkTM.add( TweenMax.to( _clip, _animalData.idleWalk.speed, { x: destX, ease:Linear.easeNone } ) );	
 		}
 		
-		private function loopIdleWalk(params:Object):void 
+		private function loopIdleWalk(params:Object, startX:Number):void 
 		{
-			_clip.x = Main.OFF_SCREEN_RIGHT// - (Main.SCREEN_WIDTH/2);
+			_clip.x = startX;
 			_walkTM.restart();
 		}
 		

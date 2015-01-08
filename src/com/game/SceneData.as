@@ -27,17 +27,19 @@ package com.game {
 			
 			var scene1:Array = 
 			[
-				{instanceName: "blueBird", title: "BLUE BIRD", sfx: "", idleWalk: {speed: 20 } },
+				{instanceName: "blueBird", title: "BLUE BIRD", sfx: "", idleWalk: {speed: 20, dir: RIGHT} },
 				{instanceName: "bear", title: "BEAR", sfx: "" },
 				{instanceName: "turtle", title: "TURTLE", sfx: "" },
-				{instanceName: "turtle2", title: "TURTLE2", sfx: "", idleWalk: {speed: 20 } },
+				{instanceName: "turtle2", title: "TURTLE2", sfx: "", idleWalk: {speed: 20, dir: LEFT } },
 				{instanceName: "dog", title: "DOG", sfx: "", runOffDirection: LEFT, speed: 1 },
-				{instanceName: "eagle", title: "EAGLE", sfx: "", idleWalk: {speed: 20 } }
+				{instanceName: "eagle", title: "EAGLE", sfx: "", idleWalk: {speed: 20, dir: LEFT } }
 			];
 			
 			var scene2:Array = 
-			[			
-				{instanceName: "rat", title: "RAT", sfx: "", runOffDirection: LEFT, speed: 2 }
+			[
+				{instanceName: "wolf", title: "WOLF", sfx: "" },
+				{instanceName: "tiger", title: "TIGER", sfx: "" },				
+				{instanceName: "rat", title: "RAT", sfx: "", idleOdds: 2, runOffDirection: LEFT, speed: 2 }
 			];
 			
 			_scenes = [scene0, scene1, scene2];		
