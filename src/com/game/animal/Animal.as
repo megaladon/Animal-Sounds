@@ -47,14 +47,20 @@ package com.game.animal
 		private function handleObjectClicked(e:MouseEvent):void 
 		{
 			
-			// play object animation
-			_clip.gotoAndPlay("action");
+			
 			
 			// run/fly off screen if needed
-			if (_animalData.runOffDirection) runOffScreen();		
+			if (_animalData.runOffDirection) {
+				runOffScreen();	
+				// play object animation
+				_clip.gotoAndStop("action");
+			}else 
+			{
+				// play object animation
+				_clip.gotoAndPlay("action");
+			}
 			
-			
-			// Keith fix this. each object should have it's own timeline.
+			// if this animal was walking, pause it
 			if (_walkTM) {
 				_walkTM.pause();
 				addEventListener(Event.ENTER_FRAME, checkPause);
@@ -74,16 +80,21 @@ package com.game.animal
 		
 		private function runOffScreen():void 
 		{			
-			var startX:Number = _clip.x;
+			var startX:Number = _clip.x;			
 			var destX:Number =  _animalData.runOffDirection == SceneData.LEFT ? Main.OFF_SCREEN_LEFT - _clip.width:Main.OFF_SCREEN_RIGHT;
-			TweenMax.to( _clip, 1.0, { x: destX, ease:Linear.easeNone, onComplete: comeBackOnScreen, onCompleteParams:[_clip, startX, _animalData.runOffDirection] } );
+			var returnStartX:Number = _animalData.runOffDirection == SceneData.LEFT ? Main.OFF_SCREEN_RIGHT:Main.OFF_SCREEN_LEFT - _clip.width;
+			
+			// figure out speed of animal when it comes back on screen. 
+			var secPerPixel:Number =_animalData.speed/ Math.abs(startX - destX) ;
+			var returnSpeed:Number = Math.abs(startX - returnStartX) * secPerPixel;
+			
+			TweenMax.to( _clip, _animalData.speed, { x: destX, ease:Linear.easeNone, onComplete: comeBackOnScreen, onCompleteParams:[startX, returnStartX, returnSpeed] } );
 		}
 		
-		private function comeBackOnScreen(clip:MovieClip, destX:Number, direction:String, frame:String = "action", speed:Number = 1):void 
+		private function comeBackOnScreen( destX:Number, returnStartX:Number, speed:Number = 1):void 
 		{
-			_clip.gotoAndPlay(frame);
-			var startX:Number = direction == SceneData.LEFT ? Main.OFF_SCREEN_RIGHT:Main.OFF_SCREEN_LEFT - _clip.width;
-			_clip.x = startX;
+			_clip.gotoAndStop("action");
+			_clip.x = returnStartX;
 			TweenMax.to( _clip, speed, { x: destX, ease:Linear.easeNone, onComplete: comeBackOnScreenDone, onCompleteParams: [_clip] } );
 		}
 		

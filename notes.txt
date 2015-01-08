@@ -23,3 +23,7 @@ Features:
 -scenes randomly generated with different varieties of animals.
 -Keeps kids entertained on long car rides.
 Lets kids learn animals without the flash cards. Similiar to zoo animals and zoo sounds. If your kids love elmo games then they will love this!
+
+
+// TODO ----------------------------------------------------------
+open up the "Farm-pack-2" .ai images and export as vector objects
