@@ -38,18 +38,25 @@ package com.game {
 			var scene2:Array = 
 			[
 				{instanceName: "wolf", title: "WOLF", sfx: "" },
-				{instanceName: "tiger", title: "TIGER", sfx: "" },				
-				{instanceName: "rat", title: "RAT", sfx: "", idleOdds: 2, runOffDirection: LEFT, speed: 2 }
+				{instanceName: "tiger", title: "TIGER", sfx: "" },		
+				{instanceName: "dragon", title: "DRAGON", sfx: "" },		
+				{instanceName: "rat", title: "RAT", sfx: "", idleOdds: 2, runOffDirection: LEFT, speed: 2 },		
+				{instanceName: "rat2", title: "RAT", sfx: "", idleOdds: 2, runOffDirection: RIGHT, speed: 2 }
 			];
 			
-			_scenes = [scene0, scene1, scene2];		
+			var scene3:Array = 
+			[
+				{instanceName: "tRex", title: "T-REX", sfx: "" },
+				{instanceName: "raptor", title: "RAPTOR", sfx: "", idleOdds: 2, runOffDirection: RIGHT, speed: 2 }			
+			];
+			_scenes = [scene0, scene1, scene2, scene3];		
 			
 			_totalNumberOfScenes = _scenes.length;
 		}
 		
 		public function getScene(sceneNum:int):Object 
 		{
-			var sceneClips:Array = [new Scene0(), new Scene1(), new Scene2];
+			var sceneClips:Array = [new Scene0(), new Scene1(), new Scene2(), new Scene3()];
 			var scene:Object = { sceneClip: sceneClips[sceneNum], sceneData: _scenes[sceneNum] };
 			return scene;			
 		}
