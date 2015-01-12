@@ -46,17 +46,24 @@ package com.game {
 			
 			var scene3:Array = 
 			[
+				{instanceName: "terodactyl", title: "terodactyl", sfx: "", idleWalk: {speed: 20, dir: LEFT}  },
 				{instanceName: "tRex", title: "T-REX", sfx: "" },
 				{instanceName: "raptor", title: "RAPTOR", sfx: "", idleOdds: 2, runOffDirection: RIGHT, speed: 2 }			
 			];
-			_scenes = [scene0, scene1, scene2, scene3];		
+			
+			var scene4:Array =
+			[
+				{instanceName: "ram2", title: "RAM", sfx: "" },
+				{instanceName: "tractor", title: "TRACTOR", sfx: "", idleOdds: 2, runOffDirection: LEFT, speed: 4 }			
+			];
+			_scenes = [scene0, scene1, scene2, scene3, scene4];		
 			
 			_totalNumberOfScenes = _scenes.length;
 		}
 		
 		public function getScene(sceneNum:int):Object 
 		{
-			var sceneClips:Array = [new Scene0(), new Scene1(), new Scene2(), new Scene3()];
+			var sceneClips:Array = [new Scene0(), new Scene1(), new Scene2(), new Scene3(), new Scene4()];
 			var scene:Object = { sceneClip: sceneClips[sceneNum], sceneData: _scenes[sceneNum] };
 			return scene;			
 		}
