@@ -1,5 +1,6 @@
 package com.game.animal 
 {
+	import com.soundManager.SoundManager;
 	import com.game.SceneData;
 	import com.greensock.easing.Linear;
 	import com.greensock.TimelineMax;
@@ -7,6 +8,7 @@ package com.game.animal
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import treefortress.sound.SoundInstance;
 	
 	/**
 	 * ...
@@ -19,9 +21,11 @@ package com.game.animal
 		private var _walkTM:TimelineMax;
 		private var _count:Number;
 		private var _idleOdds:int;
+		private var _soundManager:SoundManager;
 		
 		public function Animal(clip:MovieClip, animalData:Object) 
 		{
+			_soundManager = new SoundManager();
 			_clip 				= clip;
 			_clip.buttonMode 	= true;
 			_clip.mouseChildren = false;
@@ -67,7 +71,7 @@ package com.game.animal
 			}   
 					
 			// play object soundFX
-				
+			var snd:SoundInstance = _soundManager.playSound( {file: "sounds/horse.mp3", loop: false, volume: 1} );
 		}		
 		
 		private function checkPause(e:Event):void 

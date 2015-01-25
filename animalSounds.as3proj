@@ -54,6 +54,7 @@
   <libraryPaths>
     <element path="lib\assets.swc" />
     <element path="lib\greensock.swc" />
+    <element path="lib\SoundAS.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
