@@ -20,7 +20,7 @@ package com.game {
 				{instanceName: "rainCloud", title: "RAIN CLOUD", soundData: {file: "", loop: false, volume: 1} },
 				{instanceName: "ram", title: "RAM", sfx: "" },
 				{instanceName: "cow", title: "COW", sfx: "" },
-				{instanceName: "horse", title: "HORSE", sfx: "" },
+				{instanceName: "horse", title: "HORSE", sfx: "sounds/horse.mp3" },
 				{instanceName: "pig", title: "PIG", sfx: "" },
 				{instanceName: "chicken", title: "CHICKEN", sfx: "", runOffDirection: LEFT, speed: 2 }
 			];
