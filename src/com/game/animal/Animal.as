@@ -73,7 +73,7 @@ package com.game.animal
 			// play object soundFX
 			if (_animalData.soundData && _animalData.soundData.file != "") 
 			{
-				var snd:SoundInstance = _soundManager.playSound( {file: _animalData.soundData.file, loop: false, volume: 1} );
+				var snd:SoundInstance = _soundManager.playSound( {file: _animalData.soundData.file, loops: _animalData.soundData.loops, volume: _animalData.soundData.volume} );
 			}
 			
 		}		

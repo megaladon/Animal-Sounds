@@ -18,8 +18,9 @@ package com.soundManager
 		public function playSound(soundData:Object):SoundInstance 
 		{
 			SoundAS.loadSound(soundData.file, NORMAL);
+			//SoundAS.play(
 			//SoundAS.getSound( NORMAL );
-			var snd:SoundInstance = SoundAS.play(NORMAL, .2);
+			var snd:SoundInstance = SoundAS.play(NORMAL, soundData.volume, 0, soundData.loops);
 			//snd.soundCompleted.add(playPause);
 			
 			trace("playSound "+typeof(snd))

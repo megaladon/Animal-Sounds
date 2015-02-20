@@ -18,30 +18,30 @@ package com.game {
 			var scene0:Array = 
 			[
 				{instanceName: "rainCloud", title: "RAIN CLOUD", 	soundData: {file: "", loop: false, volume: 1} },
-				{instanceName: "ram", 		title: "RAM", 			soundData: {file: "sounds/goat.mp3", 		loop: false, volume: 1} },
-				{instanceName: "cow", 		title: "COW", 			soundData: {file: "sounds/cow-moo-3.mp3", 	loop: false, volume: 1} },
-				{instanceName: "horse", 	title: "HORSE", 		soundData: {file: "sounds/horse.mp3", 		loop: false, volume: 1} },
-				{instanceName: "pig", 		title: "PIG", 			soundData: {file: "sounds/pig-grunt.mp3", 	loop: false, volume: 1} },
-				{instanceName: "chicken", 	title: "CHICKEN", 		soundData: {file: "sounds/clucking-01.mp3", loop: false, volume: 1}, runOffDirection: LEFT, speed: 2 }
+				{instanceName: "ram", 		title: "RAM", 			soundData: {file: "sounds/goat.mp3", 		loops: 0, volume: 1} },
+				{instanceName: "cow", 		title: "COW", 			soundData: {file: "sounds/cow-moo-3.mp3", 	loops: 0, volume: 1} },
+				{instanceName: "horse", 	title: "HORSE", 		soundData: {file: "sounds/horse.mp3", 		loops: 0, volume: 1} },
+				{instanceName: "pig", 		title: "PIG", 			soundData: {file: "sounds/pig-grunt.mp3", 	loops: 0, volume: 1} },
+				{instanceName: "chicken", 	title: "CHICKEN", 		soundData: {file: "sounds/clucking-01.mp3", loops: 0, volume: 1}, runOffDirection: LEFT, speed: 2 }
 			];
 			
 			var scene1:Array = 
 			[
-				{instanceName: "blueBird", title: "BLUE BIRD", sfx: "", idleWalk: {speed: 20, dir: RIGHT} },
-				{instanceName: "bear", title: "BEAR", sfx: "" },
-				{instanceName: "turtle", title: "TURTLE", sfx: "" },
-				{instanceName: "turtle2", title: "TURTLE2", sfx: "", idleWalk: {speed: 20, dir: LEFT } },
-				{instanceName: "dog", title: "DOG", sfx: "", runOffDirection: LEFT, speed: 1 },
-				{instanceName: "eagle", title: "EAGLE", sfx: "", idleWalk: {speed: 20, dir: LEFT } }
+				{instanceName: "blueBird", 	title: "BLUE BIRD", 	soundData: {file: "sounds/flapping-sound.mp3", loops: 0, volume: 1}, idleWalk: {speed: 20, dir: RIGHT} },
+				{instanceName: "bear", 		title: "BEAR", 			soundData: {file: "sounds/growl.mp3", loops: 0, volume: 1} },
+				{instanceName: "turtle", 	title: "TURTLE", 		soundData: {file: "sounds/turtle.mp3", loops: 0, volume: 1} },
+				{instanceName: "turtle2", 	title: "TURTLE2", 		soundData: {file: "sounds/turtle.mp3", loops: 0, volume: 1}, idleWalk: {speed: 20, dir: LEFT } },
+				{instanceName: "dog", 		title: "DOG", 			soundData: {file: "sounds/dog-double-bark.mp3", loops: 0, volume: 1}, runOffDirection: LEFT, speed: 1 },
+				{instanceName: "eagle", 	title: "EAGLE", 		soundData: {file: "sounds/eagle-cry.mp3", loop: 0, volume: 1}, idleWalk: {speed: 20, dir: LEFT } }
 			];
 			
 			var scene2:Array = 
 			[
-				{instanceName: "wolf", title: "WOLF", sfx: "" },
-				{instanceName: "tiger", title: "TIGER", sfx: "" },		
-				{instanceName: "dragon", title: "DRAGON", sfx: "" },		
-				{instanceName: "rat", title: "RAT", sfx: "", idleOdds: 2, runOffDirection: LEFT, speed: 2 },		
-				{instanceName: "rat2", title: "RAT", sfx: "", idleOdds: 2, runOffDirection: RIGHT, speed: 2 }
+				{instanceName: "wolf", 		title: "WOLF", 		soundData: {file: "sounds/squeal.mp3", loops: 0, volume: 1}  },
+				{instanceName: "tiger", 	title: "TIGER", 	soundData: {file: "", loops: 0, volume: 1}  },		
+				{instanceName: "dragon",	title: "DRAGON", 	soundData: {file: "", loops: 0, volume: 1}  },		
+				{instanceName: "rat", 		title: "RAT", 		soundData: {file: "sounds/mouse.mp3", loops: 0, volume: 1} , idleOdds: 2, runOffDirection: LEFT, speed: 2 },		
+				{instanceName: "rat2", 		title: "RAT", 		soundData: {file: "sounds/mouse.mp3", loops: 0, volume: 1} , idleOdds: 2, runOffDirection: RIGHT, speed: 2 }
 			];
 			
 			var scene3:Array = 
