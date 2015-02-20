@@ -17,12 +17,12 @@ package com.game {
 			//var sceneClip:Scene0 = new Scene0();			
 			var scene0:Array = 
 			[
-				{instanceName: "rainCloud", title: "RAIN CLOUD", soundData: {file: "", loop: false, volume: 1} },
-				{instanceName: "ram", title: "RAM", sfx: "" },
-				{instanceName: "cow", title: "COW", sfx: "" },
-				{instanceName: "horse", title: "HORSE", sfx: "sounds/horse.mp3" },
-				{instanceName: "pig", title: "PIG", sfx: "" },
-				{instanceName: "chicken", title: "CHICKEN", sfx: "", runOffDirection: LEFT, speed: 2 }
+				{instanceName: "rainCloud", title: "RAIN CLOUD", 	soundData: {file: "", loop: false, volume: 1} },
+				{instanceName: "ram", 		title: "RAM", 			soundData: {file: "sounds/goat.mp3", 		loop: false, volume: 1} },
+				{instanceName: "cow", 		title: "COW", 			soundData: {file: "sounds/cow-moo-3.mp3", 	loop: false, volume: 1} },
+				{instanceName: "horse", 	title: "HORSE", 		soundData: {file: "sounds/horse.mp3", 		loop: false, volume: 1} },
+				{instanceName: "pig", 		title: "PIG", 			soundData: {file: "sounds/pig-grunt.mp3", 	loop: false, volume: 1} },
+				{instanceName: "chicken", 	title: "CHICKEN", 		soundData: {file: "sounds/clucking-01.mp3", loop: false, volume: 1}, runOffDirection: LEFT, speed: 2 }
 			];
 			
 			var scene1:Array = 

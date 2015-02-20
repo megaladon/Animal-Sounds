@@ -71,7 +71,11 @@ package com.game.animal
 			}   
 					
 			// play object soundFX
-			var snd:SoundInstance = _soundManager.playSound( {file: "sounds/horse.mp3", loop: false, volume: 1} );
+			if (_animalData.soundData && _animalData.soundData.file != "") 
+			{
+				var snd:SoundInstance = _soundManager.playSound( {file: _animalData.soundData.file, loop: false, volume: 1} );
+			}
+			
 		}		
 		
 		private function checkPause(e:Event):void 
