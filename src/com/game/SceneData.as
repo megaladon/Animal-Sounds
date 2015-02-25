@@ -38,23 +38,25 @@ package com.game {
 			var scene2:Array = 
 			[
 				{instanceName: "wolf", 		title: "WOLF", 		soundData: {file: "sounds/squeal.mp3", loops: 0, volume: 1}  },
-				{instanceName: "tiger", 	title: "TIGER", 	soundData: {file: "", loops: 0, volume: 1}  },		
-				{instanceName: "dragon",	title: "DRAGON", 	soundData: {file: "", loops: 0, volume: 1}  },		
+				{instanceName: "tiger", 	title: "TIGER", 	soundData: {file: "sounds/tiger.mp3", loops: 0, volume: 1}  },		
+				{instanceName: "dragon",	title: "DRAGON", 	soundData: {file: "sounds/dragon-roar.mp3", loops: 0, volume: 1}  },		
 				{instanceName: "rat", 		title: "RAT", 		soundData: {file: "sounds/mouse.mp3", loops: 0, volume: 1} , idleOdds: 2, runOffDirection: LEFT, speed: 2 },		
 				{instanceName: "rat2", 		title: "RAT", 		soundData: {file: "sounds/mouse.mp3", loops: 0, volume: 1} , idleOdds: 2, runOffDirection: RIGHT, speed: 2 }
 			];
-			
+		
 			var scene3:Array = 
 			[
-				{instanceName: "terodactyl", title: "terodactyl", sfx: "", idleWalk: {speed: 20, dir: LEFT}  },
-				{instanceName: "tRex", title: "T-REX", sfx: "" },
-				{instanceName: "raptor", title: "RAPTOR", sfx: "", idleOdds: 2, runOffDirection: RIGHT, speed: 2 }			
+				{instanceName: "terodactyl", 	title: "terodactyl", 	soundData: {file: "sounds/griffin-groan.mp3", loops: 0, volume: 1}, idleWalk: {speed: 20, dir: LEFT}  },
+				{instanceName: "tRex", 			title: "T-REX", 		soundData: {file: "sounds/dinosaur-loud-roar.mp3", loops: 0, volume: 1 } },
+				{instanceName: "raptor", 		title: "RAPTOR", 		soundData: {file: "sounds/dinosaur1.mp3", loops: 0, volume: 1 }, idleOdds: 2, runOffDirection: RIGHT, speed: 2 }			
 			];
 			
 			var scene4:Array =
 			[
-				{instanceName: "ram2", title: "RAM", sfx: "" },
-				{instanceName: "tractor", title: "TRACTOR", sfx: "", idleOdds: 2, runOffDirection: LEFT, speed: 4 }			
+				{instanceName: "ram2", 		title: "RAM", 				soundData: {file: "sounds/sheep-2.mp3", 				loops: 0, volume: 1 } },
+				{instanceName: "rooster", 	title: "ROOSTER", 			soundData: {file: "sounds/rooster-crows-inside.mp3", 	loops: 0, volume: 1 } },
+				{instanceName: "pig", 		title: "PIG", 				soundData: {file: "sounds/pig-grunt.mp3", 				loops: 0, volume: 1 } },
+				{instanceName: "tractor", 	title: "TRACTOR", 			soundData: {file: "sounds/mower-loop-slow-speed.mp3", 	loops: 0, volume: 1 }, idleOdds: 2, runOffDirection: LEFT, speed: 4 }			
 			];
 			_scenes = [scene0, scene1, scene2, scene3, scene4];		
 			

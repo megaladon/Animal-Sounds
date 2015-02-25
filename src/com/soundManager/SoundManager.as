@@ -23,7 +23,7 @@ package com.soundManager
 			var snd:SoundInstance = SoundAS.play(NORMAL, soundData.volume, 0, soundData.loops);
 			//snd.soundCompleted.add(playPause);
 			
-			trace("playSound "+typeof(snd))
+			trace("playSound "+typeof(snd)+" "+soundData.file)
 			return snd;
 		}
 		

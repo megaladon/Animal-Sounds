@@ -22,6 +22,7 @@ package com.game.animal
 		private var _count:Number;
 		private var _idleOdds:int;
 		private var _soundManager:SoundManager;
+		private var _snd:SoundInstance;
 		
 		public function Animal(clip:MovieClip, animalData:Object) 
 		{
@@ -73,7 +74,7 @@ package com.game.animal
 			// play object soundFX
 			if (_animalData.soundData && _animalData.soundData.file != "") 
 			{
-				var snd:SoundInstance = _soundManager.playSound( {file: _animalData.soundData.file, loops: _animalData.soundData.loops, volume: _animalData.soundData.volume} );
+				_snd = _soundManager.playSound( {file: _animalData.soundData.file, loops: _animalData.soundData.loops, volume: _animalData.soundData.volume} );
 			}
 			
 		}		
@@ -109,6 +110,7 @@ package com.game.animal
 		
 		private function comeBackOnScreenDone(clip:MovieClip):void 
 		{
+			_snd.pause();
 			_clip.gotoAndStop("idle");
 		}
 		
