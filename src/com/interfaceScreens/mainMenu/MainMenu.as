@@ -28,17 +28,17 @@ package com.interfaceScreens.mainMenu
 			_playButton.mouseChildren = false;
 			_playButton.addEventListener(MouseEvent.CLICK, onPlayButtonClicked);
 			
-			_optionsButton = _clip.options_btn;
-			_optionsButton.buttonMode = true;
-			_optionsButton.mouseChildren = false;	
-			_optionsButton.addEventListener(MouseEvent.CLICK, onOptionsButtonClicked);
+			//_optionsButton = _clip.options_btn;
+			//_optionsButton.buttonMode = true;
+			//_optionsButton.mouseChildren = false;	
+			//_optionsButton.addEventListener(MouseEvent.CLICK, onOptionsButtonClicked);
 		}
 		
 		public function cleanUp():void 
 		{
 			
 			_playButton.removeEventListener(MouseEvent.CLICK, onPlayButtonClicked);			
-			_optionsButton.removeEventListener(MouseEvent.CLICK, onOptionsButtonClicked);
+			//_optionsButton.removeEventListener(MouseEvent.CLICK, onOptionsButtonClicked);
 			removeChild( _clip );
 			_clip = null;
 		}
@@ -49,10 +49,10 @@ package com.interfaceScreens.mainMenu
 			dispatchEvent( new MainMenuEvents(MainMenuEvents.PLAY_BUTTON_CLICKED) );
 		}
 		
-		private function onOptionsButtonClicked(e:MouseEvent):void 
-		{
-			trace("onOptionsButtonClicked");
-		}
+		//private function onOptionsButtonClicked(e:MouseEvent):void 
+		//{
+			//trace("onOptionsButtonClicked");
+		//}
 		
 	}
 

@@ -23,6 +23,7 @@ package com.game.animal
 		private var _idleOdds:int;
 		private var _soundManager:SoundManager;
 		private var _snd:SoundInstance;
+		private var _isActive:Boolean;
 		
 		public function Animal(clip:MovieClip, animalData:Object) 
 		{
@@ -53,31 +54,44 @@ package com.game.animal
 		
 		private function handleObjectClicked(e:MouseEvent):void 
 		{
-			
-			// run/fly off screen if needed
-			if (_animalData.runOffDirection) {
-				runOffScreen();	
-				// play object animation
-				_clip.gotoAndStop("action");
-			}else 
+			if (!_isActive) 
 			{
-				// play object animation
-				_clip.gotoAndPlay("action");
-			}
+				_isActive = true;
+					// run/fly off screen if needed
+				if (_animalData.runOffDirection) {
+					runOffScreen();	
+					// play object animation
+					_clip.gotoAndStop("action");
+				}else 
+				{
+					// play object animation
+					_clip.gotoAndPlay("action");
+					addEventListener(Event.ENTER_FRAME, checkActionDone);
+				}
+				
+				// if this animal was walking, pause it
+				if (_walkTM) {
+					_walkTM.pause();
+					addEventListener(Event.ENTER_FRAME, checkPause);
+				}   
+						
+				// play object soundFX
+				if (_animalData.soundData && _animalData.soundData.file != "") 
+				{
+					_snd = _soundManager.playSound( {file: _animalData.soundData.file, loops: _animalData.soundData.loops, volume: _animalData.soundData.volume} );
+				}
+			} 
 			
-			// if this animal was walking, pause it
-			if (_walkTM) {
-				_walkTM.pause();
-				addEventListener(Event.ENTER_FRAME, checkPause);
-			}   
-					
-			// play object soundFX
-			if (_animalData.soundData && _animalData.soundData.file != "") 
-			{
-				_snd = _soundManager.playSound( {file: _animalData.soundData.file, loops: _animalData.soundData.loops, volume: _animalData.soundData.volume} );
-			}
 			
 		}		
+		
+		private function checkActionDone(e:Event):void 
+		{
+			if (_clip.currentFrameLabel == "endAction") 
+			{
+				_isActive = false;
+			}
+		}
 		
 		private function checkPause(e:Event):void 
 		{
@@ -110,6 +124,7 @@ package com.game.animal
 		
 		private function comeBackOnScreenDone(clip:MovieClip):void 
 		{
+			_isActive = false;
 			_snd.pause();
 			_clip.gotoAndStop("idle");
 		}
