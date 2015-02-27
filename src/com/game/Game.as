@@ -37,6 +37,7 @@ package com.game
 		
 		public function onNextScene():void 
 		{
+			
 			_currentSceneNum = _currentSceneNum < _sceneData.totalNumberOfScenes-1? _currentSceneNum + 1:0;
 			initScene(_currentSceneNum);
 		}

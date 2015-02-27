@@ -29,11 +29,8 @@ Lets kids learn animals without the flash cards. Similar to zoo animals and zoo 
 
 
 // TODO ----------------------------------------------------------
-Mask animals off screen
-Hide the next screen button when transitioning
 open up the "Farm-pack-2" .ai images and export as vector objects
 
 
 // BUGS -------------------------------------------------------------
-Sounds should stop when reload is clicked
-Double clicking reload button breaks scenes.
+

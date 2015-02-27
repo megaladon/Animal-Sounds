@@ -18,6 +18,7 @@ package
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
+	import treefortress.sound.SoundAS;
 	
 	
 	import flash.system.*
@@ -107,6 +108,14 @@ package
 			_game.addEventListener(GameEvents.SCENE_TRANSITION_IN_DONE, sceneReady);
 			_mainLayer.addChild(_game);
 			
+			// Create a mask for the level
+			var sceneMask:MovieClip = new MovieClip();
+            sceneMask.graphics.beginFill(0xFFCC00);
+            sceneMask.graphics.drawRect(0, 0, 2048, 1536);
+            sceneMask.graphics.endFill();
+            addChild(sceneMask);
+			_game.mask = sceneMask;	
+			
 			// Init hud
 			_hud = new Hud();
 			_hud.addEventListener(HudEvents.NEXT_SCENE_BUTTON_CLICKED, onNextScene);
@@ -128,6 +137,7 @@ package
 		
 		private function onNextScene(e:HudEvents):void 
 		{
+			SoundAS.stopAll();
 			_game.onNextScene();
 		}
 		

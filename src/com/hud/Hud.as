@@ -28,7 +28,10 @@ package com.hud
 		
 		private function onNextScene(e:MouseEvent):void 
 		{
-			if(_hudActive) dispatchEvent( new HudEvents(HudEvents.NEXT_SCENE_BUTTON_CLICKED) );
+			if (_hudActive) {
+				dispatchEvent( new HudEvents(HudEvents.NEXT_SCENE_BUTTON_CLICKED) );
+				hideHud();
+			}
 		}		
 		
 		public function hideHud():void 
