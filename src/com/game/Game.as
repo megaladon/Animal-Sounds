@@ -50,15 +50,15 @@ package com.game
 				var _previousScene:Object = _activeScene;
 				_currentSceneNum = sceneNum;
 				_activeScene =  _sceneData.getScene(_currentSceneNum);
-				_activeScene.sceneClip.x = ( Main.SCREEN_WIDTH+(_activeScene.sceneClip.width/2) );
+				_activeScene.sceneClip.x = 0//( Main.SCREEN_WIDTH+(_activeScene.sceneClip.width/2) );
 				//_activeScene.sceneClip.y = (stage.height / 2);
-				_activeScene.sceneClip.scaleX = .80;
-				_activeScene.sceneClip.scaleY = .80;				
+				//_activeScene.sceneClip.scaleX = .80;
+				//_activeScene.sceneClip.scaleY = .80;				
 				addChild( _activeScene.sceneClip );
 				
 				// --- init scene objects ---
 				var _animals:Array = [];
-				var sceneData:Array = _activeScene.sceneData
+				var sceneData:Array = _activeScene.sceneData;
 				for (var i:int = 0; i < sceneData.length; i++) 
 				{
 					var sceneObject:Object = sceneData[i];
@@ -69,13 +69,18 @@ package com.game
 				// --- Transition out previous scene ---							
 					var tm:TimelineMax = new TimelineMax( { onComplete: sceneTransitionInDone } );
 				if (_previousScene != null) {
-					tm.insert( TweenMax.to( _previousScene.sceneClip, .5, { autoAlpha:1, scaleX:.80, scaleY:.80, ease:Back.easeOut } ) );
-					tm.add( TweenMax.to(_previousScene.sceneClip, 1.0, {x: -(_previousScene.sceneClip.width+600), ease:Back.easeIn} ) );;	
+					sceneTransitionInDone();
+					removeChild( _previousScene.sceneClip );
+					_previousScene = null;
+					//tm.insert( TweenMax.to( _previousScene.sceneClip, .5, { autoAlpha:1, scaleX:.80, scaleY:.80, ease:Back.easeOut } ) );
+					//tm.add( TweenMax.to(_previousScene.sceneClip, 1.0, {x: -(_previousScene.sceneClip.width+600), ease:Back.easeIn} ) );;	
 				}
 				
 				// --- Transition in scene ---
-				tm.add( TweenMax.to( _activeScene.sceneClip, 1.0, {x: 0, ease:Back.easeOut} ) );
-				tm.add( TweenMax.to( _activeScene.sceneClip,  .5, { autoAlpha:1, scaleX: 1, scaleY: 1, ease:Back.easeOut } ) );			
+				_activeScene.sceneClip.x = 0;
+				sceneTransitionInDone();
+				//tm.add( TweenMax.to( _activeScene.sceneClip, 1.0, {x: 0, ease:Back.easeOut} ) );
+				//tm.add( TweenMax.to( _activeScene.sceneClip,  .5, { autoAlpha:1, scaleX: 1, scaleY: 1, ease:Back.easeOut } ) );			
 		}
 		
 		private function sceneTransitionInDone():void 

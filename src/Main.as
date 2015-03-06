@@ -29,9 +29,9 @@ package
 	 */
 	public class Main extends Sprite 
 	{
-		static public const SCREEN_WIDTH:int = 2048;
-		static public const OFF_SCREEN_LEFT:Number = -(SCREEN_WIDTH / 2);
-		static public const OFF_SCREEN_RIGHT:Number = SCREEN_WIDTH/2;
+		static public const SCREEN_WIDTH:int = 1024;
+		static public const OFF_SCREEN_LEFT:Number = 0
+		static public const OFF_SCREEN_RIGHT:Number = SCREEN_WIDTH
 		
 		private var _mainMenu:MainMenu;
 		private var _game:Game;
@@ -103,8 +103,8 @@ package
 		{
 			// Init gameScreen
 			_game 	= new Game();
-			_game.x = 1024;
-			_game.y = 768;
+			//_game.x = 1024;
+			//_game.y = 768;
 			_game.addEventListener(GameEvents.SCENE_TRANSITION_IN_DONE, sceneReady);
 			_mainLayer.addChild(_game);
 			
@@ -121,10 +121,11 @@ package
 			_hud.addEventListener(HudEvents.NEXT_SCENE_BUTTON_CLICKED, onNextScene);
 			addChild(_hud);
 			
+			mainMenuTransitionOutDone();
 			// Start mainMenu removal transition
-			var tm:TimelineMax = new TimelineMax( {onComplete: mainMenuTransitionOutDone} );
-			tm.insert( TweenMax.to( _mainMenu, .5, { autoAlpha:1, scaleX:.80, scaleY:.80, ease:Back.easeInOut } ) );
-			tm.add( TweenMax.to(_mainMenu, 1.0, {x: -(_mainMenu.width-600), ease:Back.easeInOut} ) );
+			//var tm:TimelineMax = new TimelineMax( {onComplete: mainMenuTransitionOutDone} );
+			//tm.insert( TweenMax.to( _mainMenu, .5, { autoAlpha:1, scaleX:.80, scaleY:.80, ease:Back.easeInOut } ) );
+			//tm.add( TweenMax.to(_mainMenu, 1.0, {x: -(_mainMenu.width-600), ease:Back.easeInOut} ) );
 		}
 		/**
 		 * Called when the current scene is done transitioning in.
