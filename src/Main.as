@@ -62,24 +62,24 @@ package
 			initMainMenu();
 			
 			// --- Init debug loop ---
-			_debugTextField = new TextField();
-			// set the text format before setting the text property
-			var myFormat:TextFormat = new TextFormat()
-			myFormat.size  = 25 
-			myFormat.color = "0xff0000"
-			myFormat.bold  = true
-			myFormat.font  = "Arial"
-			_debugTextField.defaultTextFormat = myFormat	
-			_debugTextField.x = 200;
-			_debugTextField.y = 0;
-			_debugTextField.width = 300
-			_debugTextField.autoSize = TextFieldAutoSize.CENTER;
-			_debugLayer.addChild(_debugTextField);
-			
-			var dropShadow:DropShadowFilter =  new DropShadowFilter();    
-			_debugTextField.filters =  new Array(dropShadow);
-			
-			addEventListener(Event.ENTER_FRAME, debugLoop);
+			//_debugTextField = new TextField();
+			//// set the text format before setting the text property
+			//var myFormat:TextFormat = new TextFormat()
+			//myFormat.size  = 25 
+			//myFormat.color = "0xff0000"
+			//myFormat.bold  = true
+			//myFormat.font  = "Arial"
+			//_debugTextField.defaultTextFormat = myFormat	
+			//_debugTextField.x = 200;
+			//_debugTextField.y = 0;
+			//_debugTextField.width = 300
+			//_debugTextField.autoSize = TextFieldAutoSize.CENTER;
+			//_debugLayer.addChild(_debugTextField);
+			//
+			//var dropShadow:DropShadowFilter =  new DropShadowFilter();    
+			//_debugTextField.filters =  new Array(dropShadow);
+			//
+			//addEventListener(Event.ENTER_FRAME, debugLoop);
 		}
 		
 		private function debugLoop(e:Event):void 
@@ -93,8 +93,6 @@ package
 		private function initMainMenu():void 
 		{
 			_mainMenu 	= new MainMenu();
-			_mainMenu.x = 1024;
-			_mainMenu.y = 768;
 			_mainMenu.addEventListener(MainMenuEvents.PLAY_BUTTON_CLICKED, handlePlayClicked);
 			_mainLayer.addChild(_mainMenu);
 		}
