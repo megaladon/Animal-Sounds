@@ -2,6 +2,7 @@ package com.interfaceScreens.mainMenu
 {
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
+	import flash.filters.GlowFilter;
 	
 	/**
 	 * ...
@@ -25,7 +26,13 @@ package com.interfaceScreens.mainMenu
 			_playButton = _clip.play_btn;
 			_playButton.buttonMode = true;
 			_playButton.mouseChildren = false;
-			_playButton.addEventListener(MouseEvent.CLICK, onPlayButtonClicked);
+			_playButton.addEventListener(MouseEvent.MOUSE_UP, onPlayButtonClicked);
+			_playButton.addEventListener(MouseEvent.MOUSE_DOWN, onHiliteButton);
+		}
+		
+		private function onHiliteButton(e:MouseEvent):void 
+		{		
+			Main.hiliteClip(_playButton);
 		}
 		
 		public function cleanUp():void 
@@ -37,6 +44,7 @@ package com.interfaceScreens.mainMenu
 		
 		private function onPlayButtonClicked(e:MouseEvent):void 
 		{
+			Main.unHiliteClip(_playButton);
 			dispatchEvent( new MainMenuEvents(MainMenuEvents.PLAY_BUTTON_CLICKED) );
 		}
 		

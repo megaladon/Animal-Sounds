@@ -17,7 +17,8 @@ package com.game {
 			//var sceneClip:Scene0 = new Scene0();			
 			var scene0:Array = 
 			[
-				{instanceName: "rainCloud", title: "RAIN CLOUD", 	soundData: {file: "", loop: false, volume: 1} },
+				{instanceName: "rainCloud", title: "RAIN CLOUD", 	soundData: {file: "sounds/thunder6.mp3", loop: false, volume: 1} },
+				{instanceName: "rainCloud2", title: "RAIN CLOUD", 	soundData: {file: "sounds/thunder6.mp3", loop: false, volume: 1} },
 				{instanceName: "ram", 		title: "RAM", 			soundData: {file: "sounds/goat.mp3", 		loops: 0, volume: 1} },
 				{instanceName: "cow", 		title: "COW", 			soundData: {file: "sounds/cow-moo-3.mp3", 	loops: 0, volume: 1} },
 				{instanceName: "horse", 	title: "HORSE", 		soundData: {file: "sounds/horse.mp3", 		loops: 0, volume: 1} },

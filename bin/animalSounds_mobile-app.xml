@@ -18,8 +18,8 @@
 -->
 <application xmlns="http://ns.adobe.com/air/application/16.0">
   <id>animalSoundsmobile</id>
-  <versionNumber>1.0.0</versionNumber>
-  <versionLabel></versionLabel>
+  <versionNumber>1.0.4</versionNumber>
+  <versionLabel/>
   <filename>animalSounds_mobile</filename>
   <description/>
   <name>animalSounds_mobile</name>
@@ -29,11 +29,21 @@
     <systemChrome>standard</systemChrome>
     <transparent>false</transparent>
     <visible>true</visible>
-    <fullScreen>false</fullScreen>
-    <aspectRatio>portrait</aspectRatio>
+    <fullScreen>true</fullScreen>
+    <aspectRatio>landscape</aspectRatio>
     <renderMode>cpu</renderMode>
     <autoOrients>false</autoOrients></initialWindow>
-  <icon/>
+  <icon>
+    <image36x36>AppIconsForPublish/icon36x36.png</image36x36>
+    <image48x48>AppIconsForPublish/icon48x48.png</image48x48>
+    <image72x72>AppIconsForPublish/icon72x72.png</image72x72>
+    <image96x96>AppIconsForPublish/icon96x96.png</image96x96>
+  </icon>
   <customUpdateUI>false</customUpdateUI>
   <allowBrowserInvocation>false</allowBrowserInvocation>
+  <android>
+    <manifestAdditions><![CDATA[<manifest>
+</manifest>]]></manifestAdditions>
+  </android>
+  <supportedLanguages>en</supportedLanguages>
 </application>

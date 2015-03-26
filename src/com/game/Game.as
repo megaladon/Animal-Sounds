@@ -7,6 +7,8 @@ package com.game
 	import com.greensock.easing.Linear;
 	import com.greensock.TimelineMax;
 	import com.greensock.TweenMax;
+	import com.transitions.TransitionEvents;
+	import com.transitions.TransitionManager;
 	import flash.display.MovieClip;
 	import flash.display.Stage;
 	import flash.events.Event;
@@ -24,6 +26,7 @@ package com.game
 		private var _activeSceneClip:MovieClip;
 		private var _activeSceneData:Object;
 		private var _walkTM:TimelineMax;
+		private var _tm:TransitionManager;
 		
 		public function Game() {}
 		
@@ -36,9 +39,16 @@ package com.game
 		}
 		
 		public function onNextScene():void 
+		{			
+			_currentSceneNum = _currentSceneNum < _sceneData.totalNumberOfScenes - 1? _currentSceneNum + 1:0;
+			//
+		}
+		/**
+		 * Called when transition out is done
+		 * @param	e
+		 */
+		public function initNextScene():void 
 		{
-			
-			_currentSceneNum = _currentSceneNum < _sceneData.totalNumberOfScenes-1? _currentSceneNum + 1:0;
 			initScene(_currentSceneNum);
 		}
 		/**
@@ -78,9 +88,15 @@ package com.game
 				
 				// --- Transition in scene ---
 				_activeScene.sceneClip.x = 0;
-				sceneTransitionInDone();
+				
+				transitionIn();
 				//tm.add( TweenMax.to( _activeScene.sceneClip, 1.0, {x: 0, ease:Back.easeOut} ) );
 				//tm.add( TweenMax.to( _activeScene.sceneClip,  .5, { autoAlpha:1, scaleX: 1, scaleY: 1, ease:Back.easeOut } ) );			
+		}
+		
+		private function transitionIn():void 
+		{
+			sceneTransitionInDone();
 		}
 		
 		private function sceneTransitionInDone():void 

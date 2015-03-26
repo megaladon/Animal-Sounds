@@ -4,6 +4,7 @@ package
 	import com.game.GameEvents;
 	import com.greensock.easing.Back;
 	import com.greensock.easing.Bounce;
+	import com.greensock.easing.Linear;
 	import com.greensock.easing.Sine;
 	import com.greensock.TimelineMax;
 	import com.greensock.TweenMax;
@@ -11,10 +12,15 @@ package
 	import com.hud.HudEvents;
 	import com.interfaceScreens.mainMenu.MainMenu;
 	import com.interfaceScreens.mainMenu.MainMenuEvents;
+	import com.intro.Intro;
+	import com.intro.IntroEvents;
+	import com.transitions.TransitionEvents;
+	import com.transitions.TransitionManager;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.filters.DropShadowFilter;
+	import flash.filters.GlowFilter;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
@@ -36,11 +42,14 @@ package
 		private var _mainMenu:MainMenu;
 		private var _game:Game;
 		private var _mainLayer:MovieClip;
+		private var _introLayer:MovieClip;
 		
 		// debug vars
 		private var _debugLayer:MovieClip;
 		private var _debugTextField:TextField;
 		private var _hud:Hud;
+		private var _intro:Intro;
+		private var _tm:TransitionManager;
 		
 		public function Main():void 
 		{
@@ -53,10 +62,18 @@ package
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			// --- Init layers ---
-			_mainLayer = new MovieClip();
+			_mainLayer 	= new MovieClip();
+			_introLayer	= new MovieClip();
 			_debugLayer = new MovieClip();
+			
 			addChild(_mainLayer);
+			addChild(_introLayer);
 			addChild(_debugLayer);			
+			
+			// --- Init Intro -- 
+			_intro = new Intro();
+			_introLayer.addChild(_intro);
+			_intro.addEventListener(IntroEvents.INTRO_DONE, introDone);
 			
 			// --- Init main menu ---
 			initMainMenu();
@@ -80,6 +97,16 @@ package
 			//_debugTextField.filters =  new Array(dropShadow);
 			//
 			//addEventListener(Event.ENTER_FRAME, debugLoop);
+		}
+		
+		private function introDone(e:IntroEvents):void 
+		{
+			TweenMax.to( _intro, 1, { alpha: 0, delay: 1, ease:Linear.easeNone, onComplete: removeIntro } );
+		}
+		
+		private function removeIntro():void 
+		{			
+			_introLayer.removeChild(_intro);
 		}
 		
 		private function debugLoop(e:Event):void 
@@ -138,6 +165,22 @@ package
 		{
 			SoundAS.stopAll();
 			_game.onNextScene();
+			
+			_tm = new TransitionManager(TransitionEvents.TRANSITION_OUT, TransitionEvents.DOORS);
+			_tm.addEventListener(TransitionEvents.TRANSITION_OUT_DONE, initNextScene);
+			addChild(_tm);
+		}
+		
+		private function initNextScene(e:TransitionEvents):void 
+		{
+			_game.initNextScene();
+			_tm.doorTransitionIn();
+			_tm.addEventListener(TransitionEvents.TRANSITION_IN_DONE, transitionInDone);
+		}
+		
+		private function transitionInDone(e:TransitionEvents):void 
+		{
+			removeChild(_tm);
 		}
 		
 		private function mainMenuTransitionOutDone():void 
@@ -147,7 +190,23 @@ package
 			_mainLayer.removeChild(_mainMenu);
 			_mainMenu = null;			
 			_game.init();
-		}		
+		}
+		
+		public static function hiliteClip(clip:MovieClip):void {
+			
+			var glowFilter:GlowFilter = new GlowFilter();
+			glowFilter.color = 0xffffff;
+			glowFilter.alpha = 1;
+			glowFilter.blurX = 15;
+			glowFilter.blurY = 15;
+			clip.filters = [glowFilter];
+				trace("hiliteClip");
+			
+		}
+		
+		public static function unHiliteClip(clip:MovieClip):void {
+			clip.filters = [];
+		}
 		
 	}
 	
