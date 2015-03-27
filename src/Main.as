@@ -131,6 +131,7 @@ package
 			//_game.x = 1024;
 			//_game.y = 768;
 			_game.addEventListener(GameEvents.SCENE_TRANSITION_IN_DONE, sceneReady);
+			_game.addEventListener(GameEvents.ALL_ANIMALS_CLICKED, handleAnimalsClicked);
 			_mainLayer.addChild(_game);
 			
 			// Create a mask for the level
@@ -151,6 +152,11 @@ package
 			//var tm:TimelineMax = new TimelineMax( {onComplete: mainMenuTransitionOutDone} );
 			//tm.insert( TweenMax.to( _mainMenu, .5, { autoAlpha:1, scaleX:.80, scaleY:.80, ease:Back.easeInOut } ) );
 			//tm.add( TweenMax.to(_mainMenu, 1.0, {x: -(_mainMenu.width-600), ease:Back.easeInOut} ) );
+		}
+		
+		private function handleAnimalsClicked(e:GameEvents):void 
+		{
+			_hud.promptNextScene();
 		}
 		/**
 		 * Called when the current scene is done transitioning in.

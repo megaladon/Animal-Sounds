@@ -27,6 +27,7 @@ package com.game
 		private var _activeSceneData:Object;
 		private var _walkTM:TimelineMax;
 		private var _tm:TransitionManager;
+		private var _animals:Array;
 		
 		public function Game() {}
 		
@@ -60,19 +61,17 @@ package com.game
 				var _previousScene:Object = _activeScene;
 				_currentSceneNum = sceneNum;
 				_activeScene =  _sceneData.getScene(_currentSceneNum);
-				_activeScene.sceneClip.x = 0//( Main.SCREEN_WIDTH+(_activeScene.sceneClip.width/2) );
-				//_activeScene.sceneClip.y = (stage.height / 2);
-				//_activeScene.sceneClip.scaleX = .80;
-				//_activeScene.sceneClip.scaleY = .80;				
+				_activeScene.sceneClip.x = 0			
 				addChild( _activeScene.sceneClip );
 				
 				// --- init scene objects ---
-				var _animals:Array = [];
+				_animals = [];
 				var sceneData:Array = _activeScene.sceneData;
 				for (var i:int = 0; i < sceneData.length; i++) 
 				{
 					var sceneObject:Object = sceneData[i];
 					var animal:Animal = new Animal(MovieClip(_activeScene.sceneClip[sceneObject.instanceName]), sceneData[i] );	
+					animal.addEventListener(GameEvents.ANIMAL_CLICKED, checkAllAnimalsClicked);
 					_animals.push( animal );
 				}
 				
@@ -82,16 +81,21 @@ package com.game
 					sceneTransitionInDone();
 					removeChild( _previousScene.sceneClip );
 					_previousScene = null;
-					//tm.insert( TweenMax.to( _previousScene.sceneClip, .5, { autoAlpha:1, scaleX:.80, scaleY:.80, ease:Back.easeOut } ) );
-					//tm.add( TweenMax.to(_previousScene.sceneClip, 1.0, {x: -(_previousScene.sceneClip.width+600), ease:Back.easeIn} ) );;	
 				}
 				
-				// --- Transition in scene ---
-				_activeScene.sceneClip.x = 0;
-				
-				transitionIn();
-				//tm.add( TweenMax.to( _activeScene.sceneClip, 1.0, {x: 0, ease:Back.easeOut} ) );
-				//tm.add( TweenMax.to( _activeScene.sceneClip,  .5, { autoAlpha:1, scaleX: 1, scaleY: 1, ease:Back.easeOut } ) );			
+				// --- Transition in scene ---				
+				transitionIn();			
+		}
+		
+		private function checkAllAnimalsClicked(e:GameEvents):void 
+		{
+			var clicked:int = 0;
+			for (var i:int = 0; i < _animals.length; i++) 
+			{
+				if (Animal(_animals[i]).hasBeenClicked ) clicked++;
+			}
+			trace("checkAllAnimalsClicked "+clicked);
+			if (clicked == _animals.length) dispatchEvent( new GameEvents(GameEvents.ALL_ANIMALS_CLICKED) );
 		}
 		
 		private function transitionIn():void 

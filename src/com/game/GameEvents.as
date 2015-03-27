@@ -9,6 +9,8 @@ package com.game
 	public class GameEvents extends Event 
 	{
 		public static const SCENE_TRANSITION_IN_DONE:String = "sceneTransitionInDone";
+		public static const ANIMAL_CLICKED:String = "animalClicked";
+		public static const ALL_ANIMALS_CLICKED:String = "allAnimalsClicked";
 		
 		public function GameEvents(type:String, bubbles:Boolean=false, cancelable:Boolean=false) 
 		{ 

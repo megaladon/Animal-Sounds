@@ -1,5 +1,6 @@
 package com.game.animal 
 {
+	import com.game.GameEvents;
 	import com.soundManager.SoundManager;
 	import com.game.SceneData;
 	import com.greensock.easing.Linear;
@@ -24,6 +25,7 @@ package com.game.animal
 		private var _soundManager:SoundManager;
 		private var _snd:SoundInstance;
 		private var _isActive:Boolean;
+		private var _hasBeenClicked:Boolean
 		
 		public function Animal(clip:MovieClip, animalData:Object) 
 		{
@@ -57,6 +59,8 @@ package com.game.animal
 			if (!_isActive) 
 			{
 				_isActive = true;
+				_hasBeenClicked = true;
+				dispatchEvent( new GameEvents(GameEvents.ANIMAL_CLICKED) );
 					// run/fly off screen if needed
 				if (_animalData.runOffDirection) {
 					runOffScreen();	
@@ -141,6 +145,11 @@ package com.game.animal
 		{
 			_clip.x = startX;
 			_walkTM.restart();
+		}
+		
+		public function get hasBeenClicked():Boolean 
+		{
+			return _hasBeenClicked;
 		}
 		
 	}
