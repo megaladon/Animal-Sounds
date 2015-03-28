@@ -18,11 +18,11 @@
 -->
 <application xmlns="http://ns.adobe.com/air/application/16.0">
   <id>animalSoundsmobile</id>
-  <versionNumber>1.0.4</versionNumber>
-  <versionLabel/>
-  <filename>animalSounds_mobile</filename>
+  <versionNumber>1.0.6</versionNumber>
+  <versionLabel></versionLabel>
+  <filename>Animal Sounds And Fun</filename>
   <description/>
-  <name>animalSounds_mobile</name>
+  <name>Animal Sounds And Fun</name>
   <copyright/>
   <initialWindow>
     <content>animalSounds_mobile.swf</content>
@@ -32,7 +32,7 @@
     <fullScreen>true</fullScreen>
     <aspectRatio>landscape</aspectRatio>
     <renderMode>cpu</renderMode>
-    <autoOrients>false</autoOrients></initialWindow>
+    <autoOrients>true</autoOrients></initialWindow>
   <icon>
     <image36x36>AppIconsForPublish/icon36x36.png</image36x36>
     <image48x48>AppIconsForPublish/icon48x48.png</image48x48>

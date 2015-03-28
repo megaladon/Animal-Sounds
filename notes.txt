@@ -10,6 +10,7 @@ When making an iPad game it is therefore easier to create it for a 2048x1536px d
 
 // Sound references --------------------------------------
 http://www.freesound.org/
+http://www.melodyloops.com/music-for/games/
 
 
 // Transision references ------------------------------
@@ -30,10 +31,9 @@ Features:
 
 // TODO ----------------------------------------------------------
 open up the "Farm-pack-2" .ai images and export as vector objects
+add background music
+maybe add sparkles or bubbles when a user clicks.
 
 11
 // BUGS -------------------------------------------------------------
-remove text from icons
-animals on icons are too small. Maybe just have barn and animals infront of it
-highlite reload button when all animals have been clicked or certain amout of time has gone by
 
