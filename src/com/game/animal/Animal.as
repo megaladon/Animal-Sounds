@@ -22,14 +22,14 @@ package com.game.animal
 		private var _walkTM:TimelineMax;
 		private var _count:Number;
 		private var _idleOdds:int;
-		private var _soundManager:SoundManager;
+		//private var _soundManager:SoundManager;
 		private var _snd:SoundInstance;
 		private var _isActive:Boolean;
 		private var _hasBeenClicked:Boolean
 		
 		public function Animal(clip:MovieClip, animalData:Object) 
 		{
-			_soundManager = new SoundManager();
+			//_soundManager = new SoundManager();
 			_clip 				= clip;
 			_clip.buttonMode 	= true;
 			_clip.mouseChildren = false;
@@ -82,7 +82,8 @@ package com.game.animal
 				// play object soundFX
 				if (_animalData.soundData && _animalData.soundData.file != "") 
 				{
-					_snd = _soundManager.playSound( {file: _animalData.soundData.file, loops: _animalData.soundData.loops, volume: _animalData.soundData.volume} );
+					//_snd = _soundManager.playSound( { file: _animalData.soundData.file, loops: _animalData.soundData.loops, volume: _animalData.soundData.volume } );
+					_snd = Main.SOUND_MANAGER.playSound( { file: _animalData.soundData.file, loops: _animalData.soundData.loops, volume: _animalData.soundData.volume } );
 				}
 			} 
 			

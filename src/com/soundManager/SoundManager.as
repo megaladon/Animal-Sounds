@@ -40,18 +40,23 @@ package com.soundManager
 			}
 		}		
 		
-		public function stopSound(snd:SoundInstance):void 
-		{
-			removeSoundFromArray(snd);
-			snd.destroy();
-		}
+		//public function stopSound(snd:SoundInstance):void 
+		//{
+			////removeSoundFromArray(snd);
+			//snd.stop();
+			//if(snd != null)snd.destroy();
+		//}
 		
 		public function stopAllAnimalSounds():void 
 		{			
+			var arr:Array = _animalSounds;
 			for (var i:int = 0; i < _animalSounds.length; i++) 
 			{
-				stopSound( _animalSounds[i] );
+				//stopSound( SoundInstance( _animalSounds[i]).stop() );
+				 SoundInstance( _animalSounds[i]).stop()
 			}
+			_animalSounds = [];
+			
 		}
 	}
 

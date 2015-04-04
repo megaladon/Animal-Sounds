@@ -14,8 +14,13 @@ http://www.melodyloops.com/music-for/games/
 
 
 // Transision references ------------------------------
-
 http://tympanus.net/Development/PageTransitions/
+	
+// Android air references -----------------------------
+https://www.youtube.com/watch?v=jndzCuxIGew
+	
+// iOS air references ---------------------------------
+http://www.adobe.com/devnet/air/articles/packaging-air-apps-ios.html
 	
 	
 // Temp Description

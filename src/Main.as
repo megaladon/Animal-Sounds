@@ -14,6 +14,7 @@ package
 	import com.interfaceScreens.mainMenu.MainMenuEvents;
 	import com.intro.Intro;
 	import com.intro.IntroEvents;
+	import com.soundManager.SoundManager;
 	import com.transitions.TransitionEvents;
 	import com.transitions.TransitionManager;
 	import flash.display.MovieClip;
@@ -36,8 +37,11 @@ package
 	public class Main extends Sprite 
 	{
 		static public const SCREEN_WIDTH:int = 1024;
+		static public const SCREEN_HEIGHT:int = 768;
 		static public const OFF_SCREEN_LEFT:Number = 0
 		static public const OFF_SCREEN_RIGHT:Number = SCREEN_WIDTH
+		
+		static public const SOUND_MANAGER:SoundManager = new SoundManager();
 		
 		private var _mainMenu:MainMenu;
 		private var _game:Game;
@@ -77,6 +81,8 @@ package
 			
 			// --- Init main menu ---
 			initMainMenu();
+			
+			//SOUND_MANAGER = new SoundManager();
 			
 			// --- Init debug loop ---
 			//_debugTextField = new TextField();
@@ -126,6 +132,10 @@ package
 		
 		private function handlePlayClicked(e:MainMenuEvents):void 
 		{
+			
+			var bg:String = "bg";
+			SoundAS.loadSound("sounds/music-box.mp3", bg);
+			SoundAS.play(bg, .2, 0, -1);
 			// Init gameScreen
 			_game 	= new Game();
 			//_game.x = 1024;
@@ -137,7 +147,7 @@ package
 			// Create a mask for the level
 			var sceneMask:MovieClip = new MovieClip();
             sceneMask.graphics.beginFill(0xFFCC00);
-            sceneMask.graphics.drawRect(0, 0, 2048, 1536);
+            sceneMask.graphics.drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
             sceneMask.graphics.endFill();
             addChild(sceneMask);
 			_game.mask = sceneMask;	
@@ -169,10 +179,18 @@ package
 		
 		private function onNextScene(e:HudEvents):void 
 		{
-			SoundAS.stopAll();
+			SOUND_MANAGER.stopAllAnimalSounds();
 			_game.onNextScene();
 			
 			_tm = new TransitionManager(TransitionEvents.TRANSITION_OUT, TransitionEvents.DOORS);
+			
+			var transitionMask:MovieClip = new MovieClip();
+            transitionMask.graphics.beginFill(0xFFCC00);
+            transitionMask.graphics.drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            transitionMask.graphics.endFill();
+            addChild(transitionMask);
+			_tm.mask = transitionMask;	
+			
 			_tm.addEventListener(TransitionEvents.TRANSITION_OUT_DONE, initNextScene);
 			addChild(_tm);
 		}
