@@ -37,19 +37,19 @@ package com.transitions
 		private function doorTransitionOut():void 
 		{
 			_doors = new Doors();
-			_doors.leftDoor.x = -512;
-			_doors.rightDoor.x = 1024;
+			_doors.leftDoor.x =  -(Main.SCREEN_WIDTH / 2);
+			_doors.rightDoor.x = Main.SCREEN_WIDTH;
 			addChild(_doors);
 			var leftDoorX:Number = 0;
-			var rightDoorX:Number = 512;
+			var rightDoorX:Number = (Main.SCREEN_WIDTH / 2);
 			TweenMax.to( _doors.leftDoor, 1, { x: leftDoorX, ease:Linear.easeNone, onComplete: transitionOutDone } );
 			TweenMax.to( _doors.rightDoor, 1, { x: rightDoorX, ease:Linear.easeNone } );
 		}
 		
 		public function doorTransitionIn():void 
 		{			
-			var leftDoorX:Number = -512;
-			var rightDoorX:Number = 1024;
+			var leftDoorX:Number =  -(Main.SCREEN_WIDTH / 2);;
+			var rightDoorX:Number = Main.SCREEN_WIDTH;
 			TweenMax.to( _doors.leftDoor, 1, { delay: .5, x: leftDoorX, ease:Linear.easeNone, onComplete: transitionInDone } );
 			TweenMax.to( _doors.rightDoor, 1, { delay: .5, x: rightDoorX, ease:Linear.easeNone } );
 		}

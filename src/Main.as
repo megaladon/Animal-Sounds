@@ -36,8 +36,8 @@ package
 	 */
 	public class Main extends Sprite 
 	{
-		static public const SCREEN_WIDTH:int = 1024;
-		static public const SCREEN_HEIGHT:int = 768;
+		static public const SCREEN_WIDTH:int = 1280;
+		static public const SCREEN_HEIGHT:int = 800;
 		static public const OFF_SCREEN_LEFT:Number = 0
 		static public const OFF_SCREEN_RIGHT:Number = SCREEN_WIDTH
 		
@@ -51,6 +51,7 @@ package
 		// debug vars
 		private var _debugLayer:MovieClip;
 		private var _debugTextField:TextField;
+		
 		private var _hud:Hud;
 		private var _intro:Intro;
 		private var _tm:TransitionManager;
