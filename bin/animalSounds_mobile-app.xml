@@ -18,7 +18,7 @@
 -->
 <application xmlns="http://ns.adobe.com/air/application/16.0">
   <id>animalSoundsmobile</id>
-  <versionNumber>1.0.8</versionNumber>
+  <versionNumber>1.1.7</versionNumber>
   <versionLabel></versionLabel>
   <filename>Animal Sounds And Fun</filename>
   <description/>
@@ -30,8 +30,8 @@
     <transparent>false</transparent>
     <visible>true</visible>
     <fullScreen>true</fullScreen>
-    <aspectRatio>landscape</aspectRatio>
-    <renderMode>cpu</renderMode>
+    
+    <renderMode>auto</renderMode>
     <autoOrients>true</autoOrients></initialWindow>
   <icon>
     <image36x36>AppIconsForPublish/icon36x36.png</image36x36>

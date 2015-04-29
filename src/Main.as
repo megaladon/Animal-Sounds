@@ -37,7 +37,7 @@ package
 	public class Main extends Sprite 
 	{
 		static public const SCREEN_WIDTH:int = 1280;
-		static public const SCREEN_HEIGHT:int = 800;
+		static public const SCREEN_HEIGHT:int = 720;
 		static public const OFF_SCREEN_LEFT:Number = 0
 		static public const OFF_SCREEN_RIGHT:Number = SCREEN_WIDTH
 		
@@ -65,23 +65,8 @@ package
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			
-			// --- Init layers ---
-			_mainLayer 	= new MovieClip();
-			_introLayer	= new MovieClip();
-			_debugLayer = new MovieClip();
-			
-			addChild(_mainLayer);
-			addChild(_introLayer);
-			addChild(_debugLayer);			
-			
-			// --- Init Intro -- 
-			_intro = new Intro();
-			_introLayer.addChild(_intro);
-			_intro.addEventListener(IntroEvents.INTRO_DONE, introDone);
-			
-			// --- Init main menu ---
-			initMainMenu();
+			addEventListener(Event.ACTIVATE,onActivate);
+			addEventListener(Event.DEACTIVATE,onDeactivate);
 			
 			//SOUND_MANAGER = new SoundManager();
 			
@@ -105,9 +90,39 @@ package
 			//
 			//addEventListener(Event.ENTER_FRAME, debugLoop);
 		}
+		private function onActivate(e:Event):void {
+			
+			// --- Init layers ---
+			_mainLayer 	= new MovieClip();
+			_introLayer	= new MovieClip();
+			_debugLayer = new MovieClip();
+			
+			addChild(_mainLayer);
+			addChild(_introLayer);
+			addChild(_debugLayer);			
+			
+			// --- Init Intro -- 
+			_intro = new Intro();
+			_introLayer.addChild(_intro);
+			_intro.addEventListener(IntroEvents.INTRO_DONE, introDone);
+			
+			// --- Init main menu ---
+			initMainMenu();
+		}
+		private function onDeactivate(e:Event):void {
+			
+			removeChild(_mainLayer);
+			removeChild(_introLayer);
+			removeChild(_debugLayer);
+			
+			_mainLayer 	= null;
+			_introLayer	= null;
+			_debugLayer = null;
+		}
 		
 		private function introDone(e:IntroEvents):void 
 		{
+			_intro.removeEventListener(IntroEvents.INTRO_DONE, introDone);
 			TweenMax.to( _intro, 1, { alpha: 0, delay: 1, ease:Linear.easeNone, onComplete: removeIntro } );
 		}
 		
