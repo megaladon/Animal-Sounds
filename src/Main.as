@@ -66,7 +66,7 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			addEventListener(Event.ACTIVATE,onActivate);
-			addEventListener(Event.DEACTIVATE,onDeactivate);
+			addEventListener(Event.DEACTIVATE, onDeactivate);
 			
 			//SOUND_MANAGER = new SoundManager();
 			
@@ -111,24 +111,43 @@ package
 		}
 		private function onDeactivate(e:Event):void {
 			
-			removeChild(_mainLayer);
-			removeChild(_introLayer);
-			removeChild(_debugLayer);
+			if (_intro) 
+			{
+				_intro.removeEventListener(IntroEvents.INTRO_DONE, introDone);
+				_introLayer.removeChild(_intro);
+				_intro = null;		
+			}	
+			
+			if (_game) cleanUpGame();
+			
+			if(_mainLayer) removeChild(_mainLayer);
+			if(_introLayer) removeChild(_introLayer);
+			if(_debugLayer) removeChild(_debugLayer);
+			
+			if(_mainMenu)cleanUpMainMenu();
 			
 			_mainLayer 	= null;
 			_introLayer	= null;
 			_debugLayer = null;
 		}
-		
+		/**
+		 * TODO: put tween in a timeline so it can be paused. If game loses focus during intro this will brake.
+		 * @param	e
+		 */
 		private function introDone(e:IntroEvents):void 
 		{
+			
 			_intro.removeEventListener(IntroEvents.INTRO_DONE, introDone);
 			TweenMax.to( _intro, 1, { alpha: 0, delay: 1, ease:Linear.easeNone, onComplete: removeIntro } );
 		}
 		
 		private function removeIntro():void 
 		{			
+			trace("removeIntro ");
 			_introLayer.removeChild(_intro);
+			removeChild(_introLayer);
+			_intro = null;
+			_introLayer = null;
 		}
 		
 		private function debugLoop(e:Event):void 
@@ -144,6 +163,21 @@ package
 			_mainMenu 	= new MainMenu();
 			_mainMenu.addEventListener(MainMenuEvents.PLAY_BUTTON_CLICKED, handlePlayClicked);
 			_mainLayer.addChild(_mainMenu);
+		}
+		
+		private function cleanUpGame():void 
+		{
+			
+			_game.removeEventListener(GameEvents.SCENE_TRANSITION_IN_DONE, sceneReady);
+			_game.removeEventListener(GameEvents.ALL_ANIMALS_CLICKED, handleAnimalsClicked);
+			_mainLayer.removeChild(_game);
+			
+			
+			_hud.removeEventListener(HudEvents.NEXT_SCENE_BUTTON_CLICKED, onNextScene);
+			removeChild(_hud);
+			_game = null;
+			_hud = null;
+			SoundAS.stopAll();
 		}
 		
 		private function handlePlayClicked(e:MainMenuEvents):void 
@@ -213,35 +247,40 @@ package
 		
 		private function initNextScene(e:TransitionEvents):void 
 		{
-			_game.initNextScene();
-			_tm.doorTransitionIn();
-			_tm.addEventListener(TransitionEvents.TRANSITION_IN_DONE, transitionInDone);
+			if(_game) _game.initNextScene();
+			if(_tm) _tm.doorTransitionIn();
+			if(_tm) _tm.addEventListener(TransitionEvents.TRANSITION_IN_DONE, transitionInDone);
 		}
 		
 		private function transitionInDone(e:TransitionEvents):void 
 		{
+			_tm.removeEventListener(TransitionEvents.TRANSITION_IN_DONE, transitionInDone);
 			removeChild(_tm);
 		}
 		
 		private function mainMenuTransitionOutDone():void 
-		{
-			_mainMenu.cleanUp();
-			_mainMenu.removeEventListener(MainMenuEvents.PLAY_BUTTON_CLICKED, handlePlayClicked);
-			_mainLayer.removeChild(_mainMenu);
-			_mainMenu = null;			
+		{		
+			cleanUpMainMenu();
+			// _tm.removeEventListener(TransitionEvents.TRANSITION_OUT_DONE, initNextScene);
 			_game.init();
 		}
 		
-		public static function hiliteClip(clip:MovieClip):void {
-			
+		private function cleanUpMainMenu():void 
+		{			
+			_mainMenu.cleanUp();
+			_mainMenu.removeEventListener(MainMenuEvents.PLAY_BUTTON_CLICKED, handlePlayClicked);
+			_mainLayer.removeChild(_mainMenu);
+			_mainMenu = null;
+		}
+		
+		public static function hiliteClip(clip:MovieClip):void 
+		{			
 			var glowFilter:GlowFilter = new GlowFilter();
 			glowFilter.color = 0xffffff;
 			glowFilter.alpha = 1;
 			glowFilter.blurX = 15;
 			glowFilter.blurY = 15;
-			clip.filters = [glowFilter];
-				trace("hiliteClip");
-			
+			clip.filters = [glowFilter];			
 		}
 		
 		public static function unHiliteClip(clip:MovieClip):void {

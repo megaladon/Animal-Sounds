@@ -36,8 +36,8 @@ Features:
 
 // TODO ----------------------------------------------------------
 open up the "Farm-pack-2" .ai images and export as vector objects
-add background music
 maybe add sparkles or bubbles when a user clicks.
+add sound effect when changing screens
 
 11
 // BUGS -------------------------------------------------------------

@@ -95,6 +95,7 @@ package com.game.animal
 			if (_clip.currentFrameLabel == "endAction") 
 			{
 				_isActive = false;
+				removeEventListener(Event.ENTER_FRAME, checkActionDone);
 			}
 		}
 		
@@ -104,6 +105,8 @@ package com.game.animal
 				_clip.gotoAndPlay("idle");
 				_walkTM.resume();
 				removeEventListener(Event.ENTER_FRAME, checkPause);
+				_isActive = false;
+				removeEventListener(Event.ENTER_FRAME, checkActionDone);
 			}
 		}
 		
