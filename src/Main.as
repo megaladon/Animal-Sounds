@@ -36,8 +36,8 @@ package
 	 */
 	public class Main extends Sprite 
 	{
-		static public const SCREEN_WIDTH:int = 1280;
-		static public const SCREEN_HEIGHT:int = 720;
+		static public const SCREEN_WIDTH:int = 1024;
+		static public const SCREEN_HEIGHT:int = 768;
 		static public const OFF_SCREEN_LEFT:Number = 0
 		static public const OFF_SCREEN_RIGHT:Number = SCREEN_WIDTH
 		
@@ -65,8 +65,9 @@ package
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			addEventListener(Event.ACTIVATE,onActivate);
-			addEventListener(Event.DEACTIVATE, onDeactivate);
+			//addEventListener(Event.ACTIVATE,onActivate);
+			//addEventListener(Event.DEACTIVATE, onDeactivate);
+			onActivate();
 			
 			//SOUND_MANAGER = new SoundManager();
 			
@@ -90,7 +91,7 @@ package
 			//
 			//addEventListener(Event.ENTER_FRAME, debugLoop);
 		}
-		private function onActivate(e:Event):void {
+		private function onActivate(e:Event = null):void {
 			
 			// --- Init layers ---
 			_mainLayer 	= new MovieClip();
@@ -143,7 +144,6 @@ package
 		
 		private function removeIntro():void 
 		{			
-			trace("removeIntro ");
 			_introLayer.removeChild(_intro);
 			removeChild(_introLayer);
 			_intro = null;
@@ -230,6 +230,7 @@ package
 		private function onNextScene(e:HudEvents):void 
 		{
 			SOUND_MANAGER.stopAllAnimalSounds();
+			SOUND_MANAGER.playSound( { file:"sounds/transition_doors.mp3", loop: false, volume: 1 } );
 			_game.onNextScene();
 			
 			_tm = new TransitionManager(TransitionEvents.TRANSITION_OUT, TransitionEvents.DOORS);

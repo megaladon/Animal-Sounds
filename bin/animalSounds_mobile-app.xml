@@ -18,11 +18,11 @@
 -->
 <application xmlns="http://ns.adobe.com/air/application/16.0">
   <id>animalSoundsmobile</id>
-  <versionNumber>1.1.7</versionNumber>
+  <versionNumber>1.1.9</versionNumber>
   <versionLabel></versionLabel>
-  <filename>Animal Sounds And Fun</filename>
+  <filename>animalSounds_mobile</filename>
   <description/>
-  <name>Animal Sounds And Fun</name>
+  <name>animalSounds_mobile</name>
   <copyright/>
   <initialWindow>
     <content>animalSounds_mobile.swf</content>
@@ -30,20 +30,10 @@
     <transparent>false</transparent>
     <visible>true</visible>
     <fullScreen>true</fullScreen>
-    
-    <renderMode>auto</renderMode>
+    <aspectRatio>landscape</aspectRatio>
+    <renderMode>cpu</renderMode>
     <autoOrients>true</autoOrients></initialWindow>
-  <icon>
-    <image36x36>AppIconsForPublish/icon36x36.png</image36x36>
-    <image48x48>AppIconsForPublish/icon48x48.png</image48x48>
-    <image72x72>AppIconsForPublish/icon72x72.png</image72x72>
-    <image96x96>AppIconsForPublish/icon96x96.png</image96x96>
-  </icon>
+  <icon/>
   <customUpdateUI>false</customUpdateUI>
   <allowBrowserInvocation>false</allowBrowserInvocation>
-  <android>
-    <manifestAdditions><![CDATA[<manifest>
-</manifest>]]></manifestAdditions>
-  </android>
-  <supportedLanguages>en</supportedLanguages>
 </application>

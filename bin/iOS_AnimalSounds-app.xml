@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!-- 
+	Usage:
+
+	To localize the description, use the following format for the description element.
+	<description>
+	<text xml:lang="en">English App description goes here</text>
+	<text xml:lang="fr">French App description goes here</text>
+	<text xml:lang="ja">Japanese App description goes here</text>
+	</description>
+
+	To localize the name, use the following format for the name element.
+	<name>
+	<text xml:lang="en">English App name goes here</text>
+	<text xml:lang="fr">French App name goes here</text>
+	<text xml:lang="ja">Japanese App name goes here</text>
+	</name>
+-->
+<application xmlns="http://ns.adobe.com/air/application/16.0">
+  <id>iOS-AnimalSounds</id>
+  <versionNumber>1.0</versionNumber>
+  <filename>Animal Sounds And Fun</filename>
+  <description/>
+  <name>Animal Sounds And Fun</name>
+  <copyright/>
+  <initialWindow>
+    <content>iOS_AnimalSounds.swf</content>
+    <systemChrome>standard</systemChrome>
+    <transparent>false</transparent>
+    <visible>true</visible>
+    <fullScreen>true</fullScreen>
+    <aspectRatio>landscape</aspectRatio>
+    <renderMode>auto</renderMode>
+    <autoOrients>true</autoOrients></initialWindow>
+  <icon>
+    <image29x29>AppIconsForPublish/icon29_29.png</image29x29>
+    <image57x57>AppIconsForPublish/icon_57_57.png</image57x57>
+    <image114x114>AppIconsForPublish/icon114_114.png</image114x114>
+    <image512x512>AppIconsForPublish/icon512_512.png</image512x512>
+    <image48x48>AppIconsForPublish/icon48_48.png</image48x48>
+    <image72x72>AppIconsForPublish/icon72_72.png</image72x72>
+    <image50x50>AppIconsForPublish/icon50_50.png</image50x50>
+    <image58x58>AppIconsForPublish/icon58_58.png</image58x58>
+    <image100x100>AppIconsForPublish/icon100_100.png</image100x100>
+    <image144x144>AppIconsForPublish/icon144_144.png</image144x144>
+    <image1024x1024>AppIconsForPublish/icon1024_1024.png</image1024x1024>
+    <image40x40>AppIconsForPublish/icon40_40.png</image40x40>
+    <image76x76>AppIconsForPublish/icon76_76.png</image76x76>
+    <image80x80>AppIconsForPublish/icon80_80.png</image80x80>
+    <image120x120>AppIconsForPublish/icon120_120.png</image120x120>
+    <image152x152>AppIconsForPublish/icon152_152.png</image152x152>
+  </icon>
+  <customUpdateUI>false</customUpdateUI>
+  <allowBrowserInvocation>false</allowBrowserInvocation>
+  <iPhone>
+    <InfoAdditions><![CDATA[
+  <key>UIDeviceFamily</key>
+  <array>
+    <string>1</string>
+    <string>2</string>
+  </array>
+]]></InfoAdditions>
+    <requestedDisplayResolution>standard</requestedDisplayResolution>
+  </iPhone>
+  <supportedLanguages>en</supportedLanguages></application>

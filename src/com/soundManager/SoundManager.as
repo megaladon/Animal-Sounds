@@ -24,7 +24,6 @@ package com.soundManager
 			snd.soundCompleted.add(removeSoundFromArray);
 			_animalSounds.push(snd);
 			
-			trace("playSound "+typeof(snd)+" "+soundData.file)
 			return snd;
 		}
 		

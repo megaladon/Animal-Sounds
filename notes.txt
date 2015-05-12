@@ -37,8 +37,27 @@ Features:
 // TODO ----------------------------------------------------------
 open up the "Farm-pack-2" .ai images and export as vector objects
 maybe add sparkles or bubbles when a user clicks.
-add sound effect when changing screens
+intro screen needs mask
 
 11
 // BUGS -------------------------------------------------------------
+
+
+Convert an Apple developer certificate to a P12 file on Windows
+
+To develop apps via Build, you must use a P12 certificate file. You generate this certificate based on the Apple iPhone developer certificate file you receive from Apple.
+
+    1. Download and install OpenSSL
+
+   2. Convert the developer certificate file you receive from Apple into a PEM certificate file. To do this, run the following command-line statement from the OpenSSL bin directory:
+
+openssl x509 -in developer_identity.cer -inform DER -out developer_identity.pem -outform PEM
+
+    If you are using the private key from the keychain on a Mac computer, convert it into a PEM key:
+
+openssl pkcs12 -nocerts -in mykey.p12 -out mykey.pem
+
+    You can now generate a valid P12 file, based on the key and the PEM version of the iPhone developer certificate:
+
+openssl pkcs12 -export -inkey mykey.key -in developer_identity.pem -out iphone_dev.p12
 

@@ -8,6 +8,7 @@ package com.game {
 	{
 		static public const LEFT:String = "left";
 		static public const RIGHT:String = "right";
+		static public const TRANS_SND_DOORS:String = "sounds/transition_doors.mp3";
 		
 		private var _scenes:Array;
 		private var _totalNumberOfScenes:int;

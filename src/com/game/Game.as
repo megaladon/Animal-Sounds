@@ -94,7 +94,6 @@ package com.game
 			{
 				if (Animal(_animals[i]).hasBeenClicked ) clicked++;
 			}
-			trace("checkAllAnimalsClicked "+clicked);
 			if (clicked == _animals.length) dispatchEvent( new GameEvents(GameEvents.ALL_ANIMALS_CLICKED) );
 		}
 		
